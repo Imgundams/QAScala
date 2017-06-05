@@ -9,9 +9,8 @@ object helloWorld {
     println(s"The meaning of life is computed to be $meaningOfLife, Goodbye!")
 
     var mutableVar = 10
-    mutableVar=mutableVar + 5
+    mutableVar = mutableVar + 5
     println(s"The mutable variable here is $mutableVar")
-
 
 
   }
