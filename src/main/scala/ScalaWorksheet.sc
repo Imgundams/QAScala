@@ -1,6 +1,8 @@
 //WorkSheet
 
 //Basic
+val True = true
+val False = false
 
 //Hello World
 println("Hello World")
@@ -60,8 +62,8 @@ def sumElseMultiplyOf2Numbers(aNumber: Int, bNumber: Int,
   if (addElseMultiply) aNumber + bNumber
   else aNumber * bNumber
 }
-sumElseMultiplyOf2Numbers(40, 2, true)
-sumElseMultiplyOf2Numbers(40, 2, false)
+sumElseMultiplyOf2Numbers(40, 2, True)
+sumElseMultiplyOf2Numbers(40, 2, False)
 
 //Conditionals 2
 def sumElseMultiplyOf2NumbersNoZero(aNumber: Int, bNumber: Int,
@@ -72,11 +74,11 @@ def sumElseMultiplyOf2NumbersNoZero(aNumber: Int, bNumber: Int,
   else if (addElseMultiply) aNumber + bNumber
   else aNumber * bNumber
 }
-sumElseMultiplyOf2NumbersNoZero(40, 2, true)
-sumElseMultiplyOf2NumbersNoZero(40, 2, false)
-sumElseMultiplyOf2NumbersNoZero(0, 2, true)
-sumElseMultiplyOf2NumbersNoZero(40, 0, false)
-sumElseMultiplyOf2NumbersNoZero(0, 0, true)
+sumElseMultiplyOf2NumbersNoZero(40, 2, True)
+sumElseMultiplyOf2NumbersNoZero(40, 2, False)
+sumElseMultiplyOf2NumbersNoZero(0, 2, True)
+sumElseMultiplyOf2NumbersNoZero(40, 0, False)
+sumElseMultiplyOf2NumbersNoZero(0, 0, True)
 
 //Iteration
 def stringRepeater(aString: String, aInt: Int): Unit = {
@@ -148,8 +150,8 @@ def trueFalseSumOrMultiplier(aInt: Int, bInt: Int, sumCheck: Boolean): Int = sum
   case true => aInt + bInt
   case false => aInt * bInt
 }
-trueFalseSumOrMultiplier(10, 10, false)
-trueFalseSumOrMultiplier(10, 10, true)
+trueFalseSumOrMultiplier(10, 10, False)
+trueFalseSumOrMultiplier(10, 10, True)
 
 def patternMatchingConditional(aInt: Int, bInt: Int, sumCheck: Boolean): Int = sumCheck match {
   case true => {
@@ -165,10 +167,10 @@ def patternMatchingConditional(aInt: Int, bInt: Int, sumCheck: Boolean): Int = s
     else aInt * bInt
   }
 }
-patternMatchingConditional(10, 20, false)
-patternMatchingConditional(10, 20, true)
-patternMatchingConditional(0, 20, false)
-patternMatchingConditional(10, 0, false)
-patternMatchingConditional(0, 0, false)
+patternMatchingConditional(10, 20, False)
+patternMatchingConditional(10, 20, True)
+patternMatchingConditional(0, 20, False)
+patternMatchingConditional(10, 0, False)
+patternMatchingConditional(0, 0, False)
 
 //Pattern Matching 2
