@@ -143,3 +143,32 @@ def fizzBuzzRecursion(aString: String, bString: String, aInt: Int): Unit = {
 fizzBuzzRecursion("Fizz", "Buzz", 15)
 
 //Pattern Matching 1
+//sum else multiply output not zero unless both are
+def trueFalseSumOrMultiplier(aInt: Int, bInt: Int, sumCheck: Boolean): Int = sumCheck match {
+  case true => aInt + bInt
+  case false => aInt * bInt
+}
+trueFalseSumOrMultiplier(10, 10, false)
+trueFalseSumOrMultiplier(10, 10, true)
+
+def patternMatchingConditional(aInt: Int, bInt: Int, sumCheck: Boolean): Int = sumCheck match {
+  case true => {
+    if (aInt == 0 && bInt == 0) 0
+    else if (aInt == 0) bInt
+    else if (bInt == 0) aInt
+    else aInt + bInt
+  }
+  case _ => {
+    if (aInt == 0 && bInt == 0) 0
+    else if (aInt == 0) bInt
+    else if (bInt == 0) aInt
+    else aInt * bInt
+  }
+}
+patternMatchingConditional(10, 20, false)
+patternMatchingConditional(10, 20, true)
+patternMatchingConditional(0, 20, false)
+patternMatchingConditional(10, 0, false)
+patternMatchingConditional(0, 0, false)
+
+//Pattern Matching 2
