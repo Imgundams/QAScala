@@ -174,3 +174,17 @@ patternMatchingConditional(10, 0, False)
 patternMatchingConditional(0, 0, False)
 
 //Pattern Matching 2
+
+def intergerSwitcher(aInt: Int, bInt: Int){
+
+}
+
+
+//Functional 1
+val time: Array[String] = java.util.TimeZone.getAvailableIDs
+
+def timeSplitters(){
+}
+
+//Intermediate
+//Blackjack
