@@ -181,15 +181,10 @@ def intergerSwitcher(any: Any): Any = any match {
   case (aInt, bInt) => (bInt, aInt)
   case _ => "Error! Incorrect Format"
 }
-
 intergerSwitcher(333)
 intergerSwitcher(55, 11)
 
-
 //Functional 1
 import java.util.TimeZone
-
 var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/')).filter(_.length>1).map(t=>t(1)).grouped(10).map(t=>t(0)).toArray
-
-//var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/') last).filter(t => t.length() > 3).map(t=>t.grouped(10)).map(a=>a.toArray)
 print(time)
