@@ -27,7 +27,7 @@ class Garage {
     }
     println("Vehicle type removed")
   }
-
+/*
   def removeVehicleById(id: Int): Unit = {
     val vehicleIterator = vehiclesList.iterator
     while ( {
@@ -37,7 +37,7 @@ class Garage {
       if (v == id) vehicleIterator.remove
     }
   }
-
+*/
   def empty(): Unit = {
     vehiclesList.clear()
     println("Garage is now empty.")

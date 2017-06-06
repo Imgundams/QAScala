@@ -9,6 +9,8 @@ abstract class Vehicle() {
   def model: String
 
   def year: Int
+
+  override def toString = s"Vehicle($make, $model, $year)"
 }
 
 class Car( numberOfDoors: Int) extends Vehicle(){

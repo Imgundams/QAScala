@@ -4,6 +4,7 @@
 abstract class Person(){//val fullName :String, val contactNumber:Int) {
   def fullName: String
   def ContactNumber: Int
+  override def toString = s"Person($fullName, $ContactNumber)"
 }
 
 class Employee(val employeeId:Int, val jobTitle:String, val wage:Int) extends Person(){
