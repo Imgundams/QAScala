@@ -189,10 +189,7 @@ intergerSwitcher(55, 11)
 //Functional 1
 import java.util.TimeZone
 
-//val time: Array[String] = java.util.TimeZone.getAvailableIDs map (t => t.split('/') last).filter(t => t.length() > 3) map
+var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/')).filter(_.length>1).map(t=>t(1)).grouped(10).map(t=>t(0)).toArray
 
-var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/') last).filter(t => t.length() > 3) //(t => t.foreach(t => t.grouped(10)))
-
-
+//var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/') last).filter(t => t.length() > 3).map(t=>t.grouped(10)).map(a=>a.toArray)
 print(time)
-
