@@ -175,16 +175,24 @@ patternMatchingConditional(0, 0, False)
 
 //Pattern Matching 2
 
-def intergerSwitcher(aInt: Int, bInt: Int){
-
+def intergerSwitcher(any: Any): Any = any match {
+  case Array(aInt, bInt) => (bInt, aInt)
+  case List(aInt, bInt) => (bInt, aInt)
+  case (aInt, bInt) => (bInt, aInt)
+  case _ => "Error! Incorrect Format"
 }
+
+intergerSwitcher(333)
+intergerSwitcher(55, 11)
 
 
 //Functional 1
-val time: Array[String] = java.util.TimeZone.getAvailableIDs
+import java.util.TimeZone
 
-def timeSplitters(){
-}
+//val time: Array[String] = java.util.TimeZone.getAvailableIDs map (t => t.split('/') last).filter(t => t.length() > 3) map
 
-//Intermediate
-//Blackjack
+var time = java.util.TimeZone.getAvailableIDs.map (t => t.split('/') last).filter(t => t.length() > 3) //(t => t.foreach(t => t.grouped(10)))
+
+
+print(time)
+
