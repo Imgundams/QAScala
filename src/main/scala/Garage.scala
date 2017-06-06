@@ -4,6 +4,54 @@
 class Garage {
 
 
+  import java.util
+
+  var vehiclesList = new util.ArrayList[Vehicle]
+
+  def addVehicle(v: Vehicle): Unit = {
+    vehiclesList.add(v)
+  }
+
+  def removeVehicleIndex(v: Vehicle): Unit = {
+    vehiclesList.remove(v)
+  }
+
+  def removeAllByType(s: String): Unit = {
+    val iter = vehiclesList.listIterator
+    while ( {
+      iter.hasNext
+    }) {
+      val slot = iter.next
+      if (s == "Car") if (slot.isInstanceOf[Car]) iter.remove
+      else if (s == "Bike") if (slot.isInstanceOf[Nothing]) iter.remove
+    }
+    println("Vehicle type removed")
+  }
+
+  def removeVehicleById(id: Int): Unit = {
+    val vehicleIterator = vehiclesList.iterator
+    while ( {
+      vehicleIterator.hasNext
+    }) {
+      val v = vehicleIterator.next
+      if (v == id) vehicleIterator.remove
+    }
+  }
+
+  def empty(): Unit = {
+    vehiclesList.clear()
+    println("Garage is now empty.")
+  }
+
+  def printall(): Unit = {
+    println("Column info\tid\twheels\tdoors\tseats\tcolour\tmake")
+      for (j <- vehiclesList) {
+      println(j)
+    }
+  }
+
+
+/*
   abstract class Vehicle {
 
     def make: String
@@ -30,5 +78,5 @@ class Garage {
   case class Employee(fullName: String, contactNumber: Int, employeeId: Int, jobTitle: String, wage: Int) extends Person()
 
   case class Customer(fullName: String, contactNumber: Int, customerId: Int, customerVehicle: String) extends Person()
-
+*/
 }
