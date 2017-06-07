@@ -1,28 +1,15 @@
-/**
-  * Created by Boss on 06/06/2017.
-  */
-
-abstract class Vehicle() {
-
-  def make: String
-
-  def model: String
-
-  def year: Int
-
-  override def toString = s"Vehicle($make, $model, $year)"
+/*
+   Created by Boss on 06/06/2017.
+*/
+object Vehicle {
+  abstract class Vehicle(var make: String, var model :String) {
+    def getMake: String = make
+    def getModel: String = model
+  }
+  class Car(make: String, model: String, val numberOfDoors: Int) extends Vehicle(make, model) {
+    override def toString = s"Vehicle($make, $model, $numberOfDoors)"
+  }
+  class Bike(make: String, model: String, val engineSize: Int) extends Vehicle(make, model) {
+    override def toString = s"Vehicle($make, $model, $engineSize)"
+  }
 }
-
-class Car( numberOfDoors: Int) extends Vehicle(){
-override def make: String = ???
-override def model: String = ???
-override def year: Int = ???
-}
-
-class Bike(engineSize: Int) extends Vehicle() {
-  override def make: String = ???
-  override def model: String = ???
-  override def year: Int = ???
-}
-
-

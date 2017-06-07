@@ -9,7 +9,7 @@ def blackJackPlay(hand1: Int, hand2: Int): Any = {
   else "Crashed!"
 }
 
-//Blackjack Tuple
+//Blackjack Tuple Case Mapping
 def blackerJackPlay(hand1: Int, hand2: Int): Any = {
   (hand1, hand2) match {
     case (hand1, hand2) if (hand1 > 21) && (hand2 > 21) => "Both Player Lose"
@@ -42,7 +42,7 @@ def uniqueAdder(value1: Int, value2: Int, value3: Int): Int = {
   else value1 + value2 + value3
 }
 
-//Unique Sum Tuple
+//Unique Sum Tuple Case Mapping
 def uniquerAdder(value1: Int, value2: Int, value3: Int): Int = {
   (value1, value2, value3) match {
     case (value1, value2, value3) if (value1 == value2) && (value1 == value3) => 0
@@ -70,10 +70,10 @@ def WayTooHot(heat: Int, isSummer: Boolean): Boolean = {
   else false
 }
 
-//TooHot Tuple
+//TooHot Tuple case mapping
 def WayTooHotter(heat: Int, isSummer: Boolean): Boolean = {
   (heat, isSummer) match {
-    case (heat, isSummer) if (isSummer)&&(heat >= 60 && heat <= 100) => true
+    case (heat, isSummer) if (isSummer) && (heat >= 60 && heat <= 100) => true
     case (heat, isSummer) if (heat >= 60 && heat <= 90) => true
     case _ => false
   }

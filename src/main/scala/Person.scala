@@ -1,18 +1,15 @@
-/**
-  * Created by Boss on 06/06/2017.
-  */
-abstract class Person(){//val fullName :String, val contactNumber:Int) {
-  def fullName: String
-  def ContactNumber: Int
-  override def toString = s"Person($fullName, $ContactNumber)"
-}
-
-class Employee(val employeeId:Int, val jobTitle:String, val wage:Int) extends Person(){
-  override def fullName: String = ???
-  override def ContactNumber: Int = ???
-}
-
-class Customer(val customerId:Int, val customerVehicle: String ) extends Person(){
-  override def fullName: String = ???
-  override def ContactNumber: Int = ???
+/*
+   Created by Boss on 06/06/2017.
+*/
+object Person {
+  abstract class Person(val fullName: String, val contactNumber: Int) {
+    def getFullName: String = fullName
+    def getContactNumber: Int = contactNumber
+  }
+  class Employee(fullName: String, contactNumber: Int, val jobTitle: String, val wage: Int) extends Person(fullName, contactNumber) {
+    override def toString = s"Person($fullName, $contactNumber, $jobTitle, $wage)"
+  }
+  class Customer(fullName: String, contactNumber: Int, val customerVehicle: String) extends Person(fullName, contactNumber) {
+    override def toString = s"Person($fullName, $contactNumber, $customerVehicle)"
+  }
 }
