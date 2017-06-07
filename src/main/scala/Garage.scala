@@ -5,17 +5,18 @@ import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 */
 class Garage {
 
-  import Person.Customer
-  import Person.Employee
-  import Vehicle._
-  var vehicleList = new ListBuffer[Vehicle.Vehicle]()
+  var vehicleList = new ListBuffer[Vehicle]()
 
   def addVehicle(vehicleType:String, make: String, model :String, engineOrDoors:Int): Any = {
     (vehicleType)match {
       case "Car" =>{
        var car = new Car(make,model,engineOrDoors)
+        vehicleList += car
     }
-      case "Bike" =>
+      case "Bike" =>{
+        var bike = new Bike(make,model,engineOrDoors)
+        vehicleList += bike
+      }
       case _ => "Spaceship"
     }
   }

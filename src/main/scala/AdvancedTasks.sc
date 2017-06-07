@@ -14,6 +14,7 @@ var buffa = ListBuffer[Any]()
 
 val car1 = new Car("Fiat","Panda", 4)
 val car2 = new Car("Ferrari","Enzo",2)
+val car
 
 
 buffa += car1
