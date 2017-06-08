@@ -1,0 +1,9 @@
+create
+a
+method
+that
+reads
+words
+from
+this
+file
