@@ -1,3 +1,5 @@
+import scala.util.Random
+
 /**
   * Created by Administrator on 05/06/2017.
   */
@@ -106,5 +108,21 @@ object helloWorld {
 
   primesIterative(1000000)
 
+
+  //Optional callback function
+  def printStuff (sendStuff: Option[()=>Unit]= None)={
+    println("Stuff")
+    sendStuff map (callback=>callback())
+
+  }
+  printStuff()
+  printStuff(Some(()=>{
+    println("Finished")
+  }))
+
+lazy val randomLong = {Random.nextLong()}
+  randomLong
 }
 //https://www.spantree.net/blog/2015/10/05/5-things-about-scala.html
+
+

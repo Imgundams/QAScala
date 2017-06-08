@@ -1,26 +1,41 @@
-import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import scala.collection.mutable.ArrayBuffer
+import scala.io.Source
 
-abstract class Vehicle(var make: String, var model :String) {
-  def getMake: String = make
-  def getModel: String = model
+val filename = "C:\\Users\\Administrator\\IdeaProjects\\QAScala\\src\\main\\scala\\InputText.txt"
+def fileReader(filepath: String): Array[String] = Source.fromFile(filename).getLines.toArray.sortBy(-_.size)
+var anagrams = fileReader(filename)
+fileReader(filename)
+
+def wordSplitter(words: String): String = {
+  words.toCharArray.sorted
+  var arrayOfLetters = ArrayBuffer[Char]()
+  for (split <- words) arrayOfLetters += split
+  arrayOfLetters.sorted.mkString
 }
-class Car(make: String, model: String, val numberOfDoors: Int) extends Vehicle(make, model) {
-  override def toString = s"Vehicle($make, $model, $numberOfDoors)"
+wordSplitter("Hello")
+
+"hello".toCharArray.sorted
+var arrayOfLetters = ArrayBuffer[Char]()
+for (split <- "Hello") arrayOfLetters += split
+arrayOfLetters.sorted
+
+var bool:Boolean = 'g'>'a'
+
+//def doIt(words: Array[String]): String ={
+
+
+
+
+var words = fileReader(filename)
+
+
+
+/*while (i < words.length){
+  i = i+1
+  print(words(i).toCharArray.sorted.mkString)
 }
+*/
+//words.foreach(words<=words.toCharArray.sorted.mkString)
+print(words)
 
-
-var buffa = ListBuffer[Any]()
-
-
-val car1 = new Car("Fiat","Panda", 4)
-val car2 = new Car("Ferrari","Enzo",2)
-val car
-
-
-buffa += car1
-buffa += car2
-
-buffa.remove(0)
-
-
-println(buffa.size)
+"hello"
