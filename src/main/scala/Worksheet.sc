@@ -1,11 +1,12 @@
-/*
+/*/*
 import scala.io.StdIn.{readLine, readInt}
 import scala.math._
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
-
-/*
+//https://www.spantree.net/blog/2015/10/05/5-things-about-scala.html
+//http://docs.scala-lang.org/cheatsheets/
+//https://github.com/lampepfl/progfun-wiki/blob/gh-pages/CheatSheet.md
 You can execute commands directly in the terminal
 REPL : Read Evaluate Print Loop
 Type scala in terminal to start and :q to quit
@@ -15,12 +16,8 @@ Type scala in terminal to start and :q to quit
 
 // You only use semicolons in Scala if you have multiple statements per line
 
-// You can use that variable in the code that follows
-"Your answer " + res0
-
 // Define your own variable
 var myName = "Dan"
-
 // Define your own constant variable
 val myAge = 40
 
@@ -794,4 +791,88 @@ case class JustInt(i: Int) extends FizzBuzzADT(i)
   }
 
 Stream(1 to 15: _*).map(fizzBuzzADT(_)).foreach(println)
+
+
+//Collection hierachy
+//                          Traversable
+//                               |
+//            >>>>>>>>>>>>> Iterable <<<<<<
+//            |                  |        |
+//      >>> Seq <<<<<<<<<       Set      Map
+//      |     |         |
+//      |  LinearSeq  IndexedSqe
+//      |     |         |
+//  Array   List      Vector
+//
+
+//  List
+//  finite immutable Sequence, Preserves order, contains duplicates,immutable
+//to "mutate" an immutable you simply create a new list
+val list1: List[String] = List("Thing1", "Thing2", "Everything else")
+println(s"First index in the list is ${list1.head} followed by ${list1(1)} and ${list1(2)}")
+val list2 = "Other" +: list1 //Append, to Prepend it's :+
+//to join lists use :: this places the list inside the list and ::: concats the lists
+val list3 = List.empty //creates an empty list
+
+//List buffer is a mutable list
+val buff = scala.collection.mutable.ListBuffer.empty[Int]
+buff +=1; buff += 10 ; buff.toList //results in List(1,10)
+
+//Array
+//Preserves order, can contain duplicates, mutable
+// scala arrays can be generic where Array[T] can be type passed, supports all Seq Ops.
+
+val array1 : Array[String] = Array ("Thing1", "Thing2", "Thing3")
+println(array1(1))
+val row =2 ; val columns = 3
+val array2: Array[Array[String]] = Array.ofDim[String](row,columns)
+val array3: Array[Int] = (1 to 10).toArray[Int] // makes an array with 1 through 10
+
+
+//ArrayBuffer
+//used for appending things to a array constantly
+val buff2 = scala.collection.mutable.ArrayBuffer.empty[Int]
+buff2 +=1; buff2 += 10 ; buff2.toList //results in List(1,10)
+
+
+//Vector
+//immutable
+//fast when processing the head, but cycles through each index so can take time
+val vector1 = Vector(1,2,3)
+
+
+//Sets
+//does not preserve order, does not contain duplicates
+// used for Tests
+val set1 = Set(1,2,3)
+val set2 = Set (4,5,6)
+set1(1); set1 contains 2; set1 subsetOf set2 // Tests - Boolean checks
+set1 + 4; set1 + (5,6,7); set1 ++ set2 // Additions
+set1 - 3; set1 - (1,3); set1 -- set2// Removals
+set1 & set2; set1 | set2; set1 &~ set2// Intersect, Union and Difference
+
+//For mutable set import is required
+val aValue = 1
+val bool = true
+val  set3 = scala.collection.mutable.Set(1,2,3,4,5,6,7)
+val set4 = Set(1,3,4)// immutable set
+set3 += 5; set3 ++= set4//adds to front of the lists
+set3 add 43 // add new value end of the list and returns true if it wasn't in the set already
+set3 -= 1; set3 --=set4 //removals
+set3 remove 4 // removes value if can and returns true if it removed it
+set3 retain (aValue =>aValue>3) //removes all values below 3
+set3.clear(); val set5 = set3.clone()// clones the mutable set
+set3.update(aValue, bool)// adds aValue if bool is true, or removess if false
 */
+
+//Maps
+// key to value pairs, could be data types, functions or maps
+def adder(v1: Int , v2 : Int): Int ={ v1 + v2}
+val map1 = Map(1 -> "Rock", 2 -> "Paper", 3 -> "Scissors")
+val map2 = Map("Fire" -> 1, "Ice" -> 2, "Storm" -> 3)
+val map3 = Map( map1 -> adder(1,2), map2 -> adder(3,4) )
+map1(2);map1.get(2); map2("Fire"); map1.getOrElse(3,"Blah")//getOrElse is key or Default Value
+map1
+
+
+

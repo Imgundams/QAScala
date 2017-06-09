@@ -123,6 +123,6 @@ object helloWorld {
 lazy val randomLong = {Random.nextLong()}
   randomLong
 }
-//https://www.spantree.net/blog/2015/10/05/5-things-about-scala.html
+
 
 

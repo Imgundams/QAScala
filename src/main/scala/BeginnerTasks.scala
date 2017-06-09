@@ -172,7 +172,7 @@ object BeginnerTasks {
   trueFalseSumOrMultiplier(10, 10, False)
   trueFalseSumOrMultiplier(10, 10, True)
 
-  def patternMatchingConditional(aInt: Int, bInt: Int, sumCheck: Boolean)(: Int = sumCheck match {
+  def patternMatchingConditional(aInt: Int, bInt: Int, sumCheck: Boolean): Int = sumCheck match {
     case true => {
       if (aInt == 0 && bInt == 0) 0
       else if (aInt == 0) bInt
