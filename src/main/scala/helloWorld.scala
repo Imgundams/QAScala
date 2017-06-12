@@ -1,8 +1,3 @@
-import scala.util.Random
-
-/**
-  * Created by Administrator on 05/06/2017.
-  */
 object helloWorld {
 
   def main(args: Array[String]) {
@@ -119,10 +114,4 @@ object helloWorld {
   printStuff(Some(()=>{
     println("Finished")
   }))
-
-lazy val randomLong = {Random.nextLong()}
-  randomLong
 }
-
-
-
