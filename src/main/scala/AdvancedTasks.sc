@@ -1,8 +1,8 @@
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
-
+/*
 val filename = "C:\\Users\\Administrator\\IdeaProjects\\QAScala\\src\\main\\scala\\InputText.txt"
-def fileReader(filepath: String): Array[String] = Source.fromFile(filename).getLines.toArray.sortBy(-_.size)
+def fileReader(filepath: String): Array[String] = Source.fromFile(filename).getLines.toArray.sortBy(-_.length)
 var anagrams = fileReader(filename)
 fileReader(filename)
 
@@ -34,8 +34,11 @@ var words = fileReader(filename)
   i = i+1
   print(words(i).toCharArray.sorted.mkString)
 }
+val words = ListBuffer("what","did","you","say")
+def orderTheString(word : String) = word.sortWith(_<_)
+var codes =  words.map(x => orderTheString(x))
 */
 //words.foreach(words<=words.toCharArray.sorted.mkString)
 print(words)
-
+*/
 "hello"

@@ -844,13 +844,56 @@ buff2 +=1; buff2 += 10 ; buff2.toList //results in List(1,10)
 val vector1 = Vector(1,2,3)
 
 */
-def setPractice:Unit ={
+
+/*
+def usingunarydecs: Unit = {
+  class Rat(x: Int, y: Int) {
+    require(y != 0, "must be nonzero")
+
+
+    private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+
+    private val g = gcd(x, y)
+
+    def this(x: Int) = this(x, 1)
+
+    def num = x / g
+
+    def den = y / g
+
+    def <(that: Rat) = num * that.den < that.num * den
+
+    def max(that: Rat) = if (this < that) that else this
+
+    def +(that: Rat): Unit =
+      new Rat(
+        num * that.den + that.num * den,
+        den * that.den
+      )
+
+    def unary_- : Rat = new Rat(-num, den)
+
+    def -(that: Rat) = this + -that
+
+    override def toString = f"$num/$den"
+  }
+  val x = new Rat(1, 3)
+  val y = new Rat(5, 7)
+  val z = new Rat(3, 2)
+  x.num
+  x.den
+  x.+(y)
+  y.+(y)
+}
+
+
+def setPractice: Unit = {
   //Sets
   //does not preserve order, does not contain duplicates
   // used for Tests
-  val set1 = Set (1, 2, 3)
-  val set2 = Set (4, 5, 6)
-  set1 (1)
+  val set1 = Set(1, 2, 3)
+  val set2 = Set(4, 5, 6)
+  set1(1)
   set1 contains 2
   set1 subsetOf set2 // Tests - Boolean checks
   set1 + 4
@@ -866,8 +909,8 @@ def setPractice:Unit ={
   //For mutable set import is required
   val aValue = 1
   val bool = true
-  val set3 = scala.collection.mutable.Set (1, 2, 3, 4, 5, 6, 7)
-  val set4 = Set (1, 3, 4) // immutable set
+  val set3 = scala.collection.mutable.Set(1, 2, 3, 4, 5, 6, 7)
+  val set4 = Set(1, 3, 4) // immutable set
   set3 += 5
   set3 ++= set4 //adds to front of the lists
   set3 add 43 // add new value end of the list and returns true if it wasn't in the set already
@@ -875,9 +918,9 @@ def setPractice:Unit ={
   set3 --= set4 //removals
   set3 remove 4 // removes value if can and returns true if it removed it
   set3 retain (aValue => aValue > 3) //removes all values below 3
-  set3.clear ()
-  val set5 = set3.clone () // clones the mutable set
-  set3.update (aValue, bool) // adds aValue if bool is true, or removess if false
+  set3.clear()
+  val set5 = set3.clone() // clones the mutable set
+  set3.update(aValue, bool) // adds aValue if bool is true, or removess if false
 }
 //Maps
 // key to value pairs, could be data types, functions or maps
@@ -1008,3 +1051,5 @@ def abstractClasses: Unit = {
   extendedObjectFromAbstractClass1.abstractdefAllToString
 }
 
+*/
+println("Bop!")

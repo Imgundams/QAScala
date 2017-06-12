@@ -5,9 +5,10 @@ package GaragePackage
   */
 
 abstract class Vehicle {
+  def id: Int
   def make: String
   def model: String
-  def printAll = println(s"($make, $model")
+  def toString: String
   def printMake(){println("Make is: "+ make)}
   def printModel(){println("Model is: "+ model)}
 }
