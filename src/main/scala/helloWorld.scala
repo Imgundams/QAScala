@@ -1,6 +1,18 @@
+
+import GaragePackage.Car
+
 object helloWorld {
 
   def main(args: Array[String]) {
+
+    var Car1 = GaragePackage.Car("Best Car", "Polo", 3)
+    var Car2 = GaragePackage.Car("Worst Car", "Polo", 3)
+    print(Car2.printAll)
+
+  }
+
+
+  def startUp:Unit= {
     println("Hello World! I work.")
     val meaningOfLife = 42
     println(s"The meaning of life is computed to be $meaningOfLife, Goodbye!")
@@ -36,39 +48,8 @@ object helloWorld {
     gim(1, 2, 3, 4, 5)
     gim("one", "two", "three", 4, false)
 
-
   }
 
-
-  abstract class Vehicle {
-
-    def make: String
-
-    def model: String
-
-    def year: Int
-  }
-
-  case class Car(make: String, model: String, year: Int, numberOfDoors: Int) extends Vehicle()
-
-  case class Bike(make: String, model: String, year: Int, engineSize: Int) extends Vehicle()
-
-  case class Truck(make: String, model: String, year: Int, cargoCapacity: Int) extends Vehicle()
-
-
-  abstract class Person {
-
-    def fullName: String
-
-    def contactNumber: Int
-  }
-
-  case class Employee(fullName: String, contactNumber: Int, employeeId: Int, jobTitle: String, wage: Int) extends Person()
-
-  case class Customer(fullName: String, contactNumber: Int, customerId: Int, customerVehicle: String) extends Person()
-
-  var Car1 = new Car("Best Car", "Polo", 1998, 3)
-  var Car2 = new Car("Worst Car", "Polo", 2001, 3)
 
 
   val stream = (5 to 1000).toStream

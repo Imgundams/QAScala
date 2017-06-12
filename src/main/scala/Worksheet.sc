@@ -1,4 +1,6 @@
-/*/*
+/*
+/*
+
 import scala.io.StdIn.{readLine, readInt}
 import scala.math._
 import scala.collection.mutable.ArrayBuffer
@@ -7,6 +9,7 @@ import scala.io.Source
 //https://www.spantree.net/blog/2015/10/05/5-things-about-scala.html
 //http://docs.scala-lang.org/cheatsheets/
 //https://github.com/lampepfl/progfun-wiki/blob/gh-pages/CheatSheet.md
+
 You can execute commands directly in the terminal
 REPL : Read Evaluate Print Loop
 Type scala in terminal to start and :q to quit
@@ -840,39 +843,168 @@ buff2 +=1; buff2 += 10 ; buff2.toList //results in List(1,10)
 //fast when processing the head, but cycles through each index so can take time
 val vector1 = Vector(1,2,3)
 
-
-//Sets
-//does not preserve order, does not contain duplicates
-// used for Tests
-val set1 = Set(1,2,3)
-val set2 = Set (4,5,6)
-set1(1); set1 contains 2; set1 subsetOf set2 // Tests - Boolean checks
-set1 + 4; set1 + (5,6,7); set1 ++ set2 // Additions
-set1 - 3; set1 - (1,3); set1 -- set2// Removals
-set1 & set2; set1 | set2; set1 &~ set2// Intersect, Union and Difference
-
-//For mutable set import is required
-val aValue = 1
-val bool = true
-val  set3 = scala.collection.mutable.Set(1,2,3,4,5,6,7)
-val set4 = Set(1,3,4)// immutable set
-set3 += 5; set3 ++= set4//adds to front of the lists
-set3 add 43 // add new value end of the list and returns true if it wasn't in the set already
-set3 -= 1; set3 --=set4 //removals
-set3 remove 4 // removes value if can and returns true if it removed it
-set3 retain (aValue =>aValue>3) //removes all values below 3
-set3.clear(); val set5 = set3.clone()// clones the mutable set
-set3.update(aValue, bool)// adds aValue if bool is true, or removess if false
 */
+def setPractice:Unit ={
+  //Sets
+  //does not preserve order, does not contain duplicates
+  // used for Tests
+  val set1 = Set (1, 2, 3)
+  val set2 = Set (4, 5, 6)
+  set1 (1)
+  set1 contains 2
+  set1 subsetOf set2 // Tests - Boolean checks
+  set1 + 4
+  set1 + (5, 6, 7)
+  set1 ++ set2 // Additions
+  set1 - 3
+  set1 - (1, 3)
+  set1 -- set2 // Removals
+  set1 & set2
+  set1 | set2
+  set1 &~ set2 // Intersect, Union and Difference
 
+  //For mutable set import is required
+  val aValue = 1
+  val bool = true
+  val set3 = scala.collection.mutable.Set (1, 2, 3, 4, 5, 6, 7)
+  val set4 = Set (1, 3, 4) // immutable set
+  set3 += 5
+  set3 ++= set4 //adds to front of the lists
+  set3 add 43 // add new value end of the list and returns true if it wasn't in the set already
+  set3 -= 1
+  set3 --= set4 //removals
+  set3 remove 4 // removes value if can and returns true if it removed it
+  set3 retain (aValue => aValue > 3) //removes all values below 3
+  set3.clear ()
+  val set5 = set3.clone () // clones the mutable set
+  set3.update (aValue, bool) // adds aValue if bool is true, or removess if false
+}
 //Maps
 // key to value pairs, could be data types, functions or maps
-def adder(v1: Int , v2 : Int): Int ={ v1 + v2}
-val map1 = Map(1 -> "Rock", 2 -> "Paper", 3 -> "Scissors")
-val map2 = Map("Fire" -> 1, "Ice" -> 2, "Storm" -> 3)
-val map3 = Map( map1 -> adder(1,2), map2 -> adder(3,4) )
-map1(2);map1.get(2); map2("Fire"); map1.getOrElse(3,"Blah")//getOrElse is key or Default Value
-map1
+def mappingStuff: Unit = {
+  def adder(v1: Int, v2: Int): Int = v1 + v2
+
+  val map1 = Map(1 -> "Rock", 2 -> "Paper", 3 -> "Scissors")
+  val map2 = Map("Fire" -> 1, "Ice" -> 2, "Storm" -> 3)
+  val map3 = Map(map1 -> adder(1, 2), map2 -> adder(3, 4))
+  map1(2);
+  map1.get(2);
+  map2("Fire");
+  map1.getOrElse(3, "Blah") //getOrElse is key or Default Value
+
+  val colors = Map("red" -> "best", "azure" -> "notSoBlue", "yellow" -> "ok")
+
+  val nums: Map[Int, Int] = Map()
+
+  println("Keys in colors : " + colors.keys)
+  println("Values in colors : " + colors.values)
+  println("Check if colors is empty : " + colors.isEmpty)
+  println("Check if nums is empty : " + nums.isEmpty)
+  colors.keys.foreach(i => print(i + " is " + colors(i)))
+}
+//Creating classes and objects
+def createclass: Unit = {
+  class SingleClass(var classString: String, val classInt: Int) {
+    def singleClassDef = println(s"Class String is $classString and the Class Int is  $classInt")
+  }
+
+  //to create the object of a class
+  val singleObject1 = new SingleClass("Object1", 1)
+  val singleObject2 = new SingleClass("Object2", 2)
+  singleObject1.singleClassDef
+  singleObject2.singleClassDef
+  singleObject1.classString
+}
+//to access the values in the objects
+
+//constructors
+def constructor: Unit = {
+  class ConstructorClass(var classString: String, val moreString: String, val classDouble: Double) {
+    def this(classString: String) = this(classString, "", 0.0)
+
+    def this(classString: String, moreString: String) = this(classString, moreString, 0.0)
+
+    override def toString: String = "%s %s, age%2.2f".format(classString, moreString, classDouble)
+
+    def printClass(): Unit =
+      if (classDouble != 0)
+        println(s"Class String is $classString furthermore $moreString and the Class Int is $classDouble")
+      else
+        println(s"Class String is $classString and $moreString")
+  }
+
+  val constructorObject1: ConstructorClass = new ConstructorClass("Only a String in this Object")
+  val constructorObject2: ConstructorClass = new ConstructorClass("String and Number here", null, 2.2)
+  constructorObject1.printClass()
+  constructorObject2.printClass()
+  constructorObject1.toString
+  constructorObject2.toString
+}
+
+//Companion Objects
+def CompanionObj: Unit = {
+  class CompanionObjectClass(val companionObjectString: String, val companionObjectInt: Option[Int] = None) {
+    def printCompanionObjectClass(): Unit = println(s"The Object name is $companionObjectString and the Object Int is ${companionObjectInt.getOrElse(0)}")
+  }
 
 
+  object CompanionObjectClass {
+    def apply(companionObjectString: String, companionObjectInt: Int): CompanionObjectClass = {
+      new CompanionObjectClass(companionObjectString)
+    }
+  }
+  val companionObject = CompanionObjectClass("CompanionObjectString", 1)
+  companionObject.printCompanionObjectClass()
+  val companionObject2 = CompanionObjectClass("CompanionObjectString2", 2)
+  companionObject2.printCompanionObjectClass()
+}
+//Companion Objects Casemapping
+def companionCasemap: Unit = {
+  class CompanionObjectClass(val companionObjectString: String, val companionObjectInt: Option[Int] = None) {
+    def printCompanionObjectClass(): Unit = println(s"The Object name is $companionObjectString and the Object Int is ${companionObjectInt.getOrElse(0)}")
+  }
+  class ObjectExtended1(objectExtendedString: String) extends CompanionObjectClass("ObjectExtendedString1")
+  class ObjectExtended2(objectExtendedString: String) extends CompanionObjectClass("ObjectExtendedString2")
+
+  object CompanionObjectClass {
+    def apply(companionObjectString: String): CompanionObjectClass = {
+      companionObjectString match {
+        case "ObjectExtended1" => new ObjectExtended1(companionObjectString)
+        case "ObjectExtended2" => new ObjectExtended2(companionObjectString)
+        case _ => new CompanionObjectClass(companionObjectString)
+      }
+    }
+  }
+  val objectExtended1 = CompanionObjectClass("ObjectExtended1")
+  val objectExtended2 = CompanionObjectClass("ObjectExtended2")
+  val objectExtended3 = CompanionObjectClass("ObjectExtended3")
+
+}
+def abstractClasses: Unit = {
+  abstract class AbstractClass {
+    def abstractString: String
+
+    def abstractInt: Int
+
+    def abstractblankdef
+
+    def abstractdefAllToString {
+      println(s"The abstractString is $abstractString and the abstractInt is $abstractInt")
+    }
+  }
+
+  class ExtendedFromAbstractClass1(extendedAbstractString: String, extendedAbstractInt: Int) extends AbstractClass {
+    def abstractString: String = extendedAbstractString
+
+    def abstractInt: Int = extendedAbstractInt
+
+    def abstractblankdef: Unit = {
+      println("This has Overwritten the abstract def.")
+    }
+  }
+
+  val extendedObjectFromAbstractClass1: ExtendedFromAbstractClass1 = new ExtendedFromAbstractClass1("Object1String", 1)
+  extendedObjectFromAbstractClass1.abstractblankdef
+  extendedObjectFromAbstractClass1.abstractdefAllToString
+}
 
