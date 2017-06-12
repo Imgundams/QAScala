@@ -7,5 +7,5 @@ case class Customer(customerId: Int, customerFullName: String, customerContactNu
   def id: Int= customerId
   def fullName: String = customerFullName
   def contactNumber: Int = customerContactNumber
-  override def toString = s"Customer,$fullName,$contactNumber,$customerVehicleReg"
+  override def toString = s"Customer,$customerId,$fullName,$contactNumber,$customerVehicleReg"
 }

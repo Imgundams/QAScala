@@ -7,5 +7,5 @@ case class Car(carId:Int, carMake: String, carModel: String, numberOfDoors: Int)
   def id: Int = carId
   def make:String = carMake
   def model: String = carModel
-  override def toString = s"Car,$make,$model,$numberOfDoors"
+  override def toString = s"Car,$carId,$make,$model,$numberOfDoors"
 }
