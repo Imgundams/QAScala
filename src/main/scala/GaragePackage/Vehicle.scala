@@ -5,11 +5,12 @@ package GaragePackage
   */
 
 abstract class Vehicle {
+  def vehicleType:VehicleTypes.Value
   def id: Int
   def make: String
   def model: String
   def toString: String
   def printMake(){println("Make is: "+ make)}
   def printModel(){println("Model is: "+ model)}
-  def damage:Int
+  def damaged:Boolean
 }

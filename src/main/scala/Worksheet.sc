@@ -6,6 +6,8 @@ import scala.math._
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
+
+//https://www.dotnetperls.com/list-scala
 //https://www.spantree.net/blog/2015/10/05/5-things-about-scala.html
 //http://docs.scala-lang.org/cheatsheets/
 //https://github.com/lampepfl/progfun-wiki/blob/gh-pages/CheatSheet.md
