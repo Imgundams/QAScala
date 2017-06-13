@@ -1,12 +1,8 @@
 package GaragePackage
-
-import com.sun.org.apache.bcel.internal.generic.RETURN
-
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
-/*
-  Created by Boss on 06/06/2017.
-*/
+//  Created by Dani on 06/06/2017.
+
 object Garage {
 
   def main(args: Array[String]) {
@@ -18,12 +14,13 @@ object Garage {
 
     //Testing the Vehicles
     println(vehicleList.toString())
-    removeVehicleById(2)
-    removeVehicle(VehicleTypes.Bike)
+    removeVehicleById(5)
+    //removeVehicle(VehicleTypes.Bike)
     println(vehicleList.toString())
     addVehicle(VehicleTypes.Bike, "Kawasaki", "Ninja", 5)
     addVehicle(VehicleTypes.Bike, "Kawasaki", "Ninja", 6)
     println(vehicleList.toString())
+
     addVehicle(VehicleTypes.Truck, "CycleMaster", "Speedy", 7)
 
     //Employing the crew
@@ -34,6 +31,7 @@ object Garage {
     addEmployee("Mel Moat", 555555, JobTitles.Assistant)
     println(employeeList.toString())
     println(vehicleList.foreach(x=>println(x.toString)))
+    printall()
   }
 
 
@@ -56,7 +54,9 @@ object Garage {
   }
 
   def removeVehicleById(idToRemove: Int): Unit = {
-   // vehicleList.foreach(vehicle => if (vehicle.id == idToRemove) vehicleList -= vehicle return)
+
+    vehicleList = vehicleList.filter(v=>v.id != idToRemove)
+
   }
 
   def removeVehicle(vehicleType: VehicleTypes.Value): Unit = {
@@ -67,7 +67,7 @@ object Garage {
       case VehicleTypes.Bike => {
         vehicleList = vehicleList.filter(!_.isInstanceOf[Bike])
       }
-      case _ => println(s"$vehicleType is not a Car or Bike, Get out of here!")
+      case _ =>println(s"$vehicleType is not a Car or Bike, Get out of here!")
     }
   }
 
@@ -87,15 +87,27 @@ object Garage {
       }
     }
   }
-  def fixAll(): Unit = {}
+  def fixAll(): Unit = {
+    vehicleList
+  }
   def fixVehicleall(): Unit = {
     for (vehicle <- vehicleList) {
+      vehicle
     }
   }
 
-  def empty(): Unit = {}
 
-  def printall(): Unit = {}
+  def printall(): Unit = {
+    println("|          The Garage            |")
+    println("__________________________________")
+    println("|          The Vehicles          |")
+    println("__________________________________")
+    vehicleList.foreach(v => println(v.toString))
+    println("__________________________________")
+    println("|          The Employees         |")
+    println("__________________________________")
+    employeeList.foreach(e => println(e.toString))
+  }
 
   object id1 {
     private val clockticker = new java.util.concurrent.atomic.AtomicInteger
