@@ -11,4 +11,5 @@ abstract class Vehicle {
   def toString: String
   def printMake(){println("Make is: "+ make)}
   def printModel(){println("Model is: "+ model)}
+  def damage:Int
 }

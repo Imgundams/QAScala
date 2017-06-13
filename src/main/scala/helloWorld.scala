@@ -5,9 +5,6 @@ object helloWorld {
 
   def main(args: Array[String]) {
 
-    var Car1 = GaragePackage.Car("Best Car", "Polo", 3)
-    var Car2 = GaragePackage.Car("Worst Car", "Polo", 3)
-    print(Car2.printAll)
 
   }
 
