@@ -1,18 +1,12 @@
-object id2 {
-  private val clockticker = new java.util.concurrent.atomic.AtomicInteger
-  def unique: Int = clockticker.getAndIncrement + 1
-}
-
-object damageValue {
-  private val random = scala.util.Random
-  def randomInt: Int = random.nextInt()
-}
+import scala.collection.mutable.ArrayBuffer
+var bang: (String,Boolean) = ("hello",true)
 
 
-damageValue.randomInt
-damageValue.randomInt
-damageValue.randomInt
-damageValue.randomInt
-damageValue.randomInt
+var buf = ArrayBuffer(55,"string",51,"thread",bang)
 
+buf -= bang
+val notBang = (bang._1,false)
 
+buf += notBang
+
+println(buf.mkString(" "))

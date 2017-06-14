@@ -89,8 +89,7 @@ object Garage {
   }
   def fixAll(): Unit = {}
   def fixVehicleall(): Unit = {
-    for (vehicle <- vehicleList) {
-    }
+    vehicleList
   }
 
   def empty(): Unit = {}
