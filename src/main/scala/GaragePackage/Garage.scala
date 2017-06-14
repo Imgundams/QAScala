@@ -14,8 +14,8 @@ object Garage {
 
     //Testing the Vehicles
     println(vehicleList.toString())
-    removeVehicleById(5)
-    //removeVehicle(VehicleTypes.Bike)
+    removeVehicleById(1)
+    removeVehicles(VehicleTypes.Bike)
     println(vehicleList.toString())
     addVehicle(VehicleTypes.Bike, "Kawasaki", "Ninja", 5)
     addVehicle(VehicleTypes.Bike, "Kawasaki", "Ninja", 6)
@@ -55,11 +55,11 @@ object Garage {
 
   def removeVehicleById(idToRemove: Int): Unit = {
 
-    vehicleList = vehicleList.filter(v=>v.id != idToRemove)
+    vehicleList = vehicleList.filterNot(_.id == idToRemove)
 
   }
 
-  def removeVehicle(vehicleType: VehicleTypes.Value): Unit = {
+  def removeVehicles(vehicleType: VehicleTypes.Value): Unit = {
     vehicleType match {
       case VehicleTypes.Car => {
         vehicleList = vehicleList.filter(!_.isInstanceOf[Car])
@@ -88,7 +88,7 @@ object Garage {
     }
   }
   def fixAll(): Unit = {
-    vehicleList
+ //   vehicleList.foreach(v=> v.damaged=true)
   }
   def fixVehicleall(): Unit = {
     for (vehicle <- vehicleList) {
