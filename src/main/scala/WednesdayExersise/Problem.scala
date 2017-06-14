@@ -6,14 +6,8 @@ package WednesdayExersise
 object Problem {
 
   object task1 {
-    ////////DOES NOT WORK I COULDN'T FINISH THIS////////
-    def doubleChar(stringToDouble: String): String = {
-      var arr =
-        arr
-      for (i <- 0 to arr) {
-        arr(i)
-        arr(i)
-      }
+    def doubleChar(stringToDouble: String): Unit = {
+      stringToDouble.split("").foreach(w => print(w*2))
     }
   }
 
@@ -36,19 +30,11 @@ object Problem {
   }
 
   object task4 {
-    ////////DOES NOT WORK I COULDN'T FINISH THIS////////
     def fibonacci(num: Int): Int = {
-      def loop(n: Int, prev: Int, now: Int): Int = {
-        if (n == 0) 0
-        else if (n == 1) 1
-        else now + loop(n - 1, now, prev)
-      }
-
-      loop(num, 0, 1)
+      if (num == 0) 0
+      else if (num == 1) 1
+      else fibonacci(num - 1) + fibonacci(num - 2)
     }
-
-    fibonacci(6)
-
   }
 
   object task5 {
@@ -75,9 +61,8 @@ object Problem {
 
   object task8 {
     ////////DOES NOT WORK I COULDN'T FINISH THIS////////
-    def stringClean(jibberish: String): String = {
-      def loop(jib: Array[Char]): String = {
-        jib.foreach(char => if)
+    def stringClean(jibberish: String): Unit = {
+      def loop(jib: Array[Char]): Unit = {
       }
 
       loop(jibberish.toCharArray)
