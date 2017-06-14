@@ -1,6 +1,3 @@
-
-import GaragePackage.Car
-
 object helloWorld {
 
   def main(args: Array[String]) {
@@ -59,27 +56,6 @@ object helloWorld {
 
   print(lists2)
 
-  import scala.collection.{immutable, mutable}
-
-  def calculatePrimesStream(end: Int): List[Int] = {
-    val odds = Stream.from(3, 2).takeWhile(_ <= Math.sqrt(end).toInt)
-    val composites = odds.flatMap(i => Stream.from(i * i, 2 * i).takeWhile(_ <= end))
-    Stream.from(3, 2).takeWhile(_ <= end).diff(composites).toList
-  }
-  calculatePrimesStream(1000000)
-  def primesIterative(end: Int): List[Int] = {
-    val primeIndices = mutable.ArrayBuffer.fill((end + 1) / 2)(1)
-    val intSqrt = Math.sqrt(end).toInt
-    for (i <- 3 to end by 2 if i <= intSqrt) {
-      for (nonPrime <- i * i to end by 2 * i) {
-        primeIndices.update(nonPrime / 2, 0)
-      }
-    }
-
-    (for (i <- primeIndices.indices if primeIndices(i) == 1) yield 2 * i + 1).tail.toList
-  }
-
-  primesIterative(1000000)
 
 
   //Optional callback function
