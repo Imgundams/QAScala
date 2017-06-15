@@ -1,49 +1,34 @@
-import scala.collection.mutable.ArrayBuffer
-import scala.io.Source
+def lcs(string1:String,string2:String):Unit={
+  var a = Array(string1,string2)
+}
+function LCSLength(X[1..m], Y[1..n])
+C = array(0..m, 0..n)
+for i := 0..m
+C[i,0] = 0
+for j := 0..n
+C[0,j] = 0
+for i := 1..m
+for j := 1..n
+if X[i] = Y[j]
+C[i,j] := C[i-1,j-1] + 1
+else
+C[i,j] := max(C[i,j-1], C[i-1,j])
+return C[m,n]
+
+
+
+/*import scala.io.Source
 
 val filename = "C:\\Users\\Administrator\\IdeaProjects\\QAScala\\src\\main\\scala\\InputText.txt"
-def fileReader(filepath: String): Array[String] =
-  Source.fromFile(filename).getLines().map(w=>w.toLowerCase).map(w => w.sorted).toArray.sortWith(_.length < _.length)
+def fileReader(filepath: String): Array[String] = Source.fromFile(filename).getLines().map(w => w.toLowerCase).map(w => w.sorted).toArray.sortWith(_.length < _.length)
+
+def stringArraySorter(longString: String): Array[String] =  longString.split("\n").map(w => w.toLowerCase).map(w => w.sorted).sortWith(_.length < _.length)
+
+def identicalKeeper(arrayOfStrings:Array[String]):Array[String]= arrayOfStrings.diff(arrayOfStrings.distinct)
+
 var anagrams = fileReader(filename)
 
-fileReader(filename)
+identicalKeeper(anagrams)
 
-anagrams
-
-/*
-def wordSplitter(words: String): String = {
-  words.toCharArray.sorted
-  var arrayOfLetters = ArrayBuffer[Char]()
-  for (split <- words) arrayOfLetters += split
-  arrayOfLetters.sorted.mkString
-}
-wordSplitter("Hello")
-
-"hello".toCharArray.sorted
-var arrayOfLetters = ArrayBuffer[Char]()
-for (split <- "Hello") arrayOfLetters += split
-arrayOfLetters.sorted
-
-var bool:Boolean = 'g'>'a'
-
-//def doIt(words: Array[String]): String ={
-
-
-
-var words = fileReader(filename)
-
-
-
-/*while (i < words.length){
-  i = i+1
-  print(words(i).toCharArray.sorted.mkString)
-}
-val words = ListBuffer("what","did","you","say")
-def orderTheString(word : String) = word.sortWith(_<_)
-var codes =  words.map(x => orderTheString(x))
-*/
-//words.foreach(words<=words.toCharArray.sorted.mkString)
-print(words)
-
-"hello"
+def anagramOutputted(sortedString:String):Unit={}
 */
