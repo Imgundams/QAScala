@@ -6,7 +6,6 @@ package GaragePackage
 object JobTitles extends Enumeration{
   type JobTitles = Value
 
-  val Cleaner     = Value("Cleaner")
   val Assistant = Value("Assistant")
   val Mechanic       = Value("Mechanic")
   val Supervisor = Value("Supervisor")

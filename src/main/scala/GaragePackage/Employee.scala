@@ -7,5 +7,5 @@ case class Employee(employeeId:Int, employeeFullName: String, employeeContactNum
   def id: Int = employeeId
   def fullName: String= employeeFullName
   def contactNumber: Int = employeeContactNumber
-  override def toString = s"Employee,$employeeId,$fullName,$contactNumber,$jobTitle,$wage"
+  override def toString :String = s"Employee,$employeeId,\t$fullName,\t$contactNumber,\t$jobTitle,\t"+f"$wage%1.2f"
 }

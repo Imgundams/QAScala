@@ -3,7 +3,7 @@ package GaragePackage
 /**
   * Created by Administrator on 12/06/2017.
   */
-case class Bike(bikeId: Int, bikeMake: String, bikeModel: String, engineSize: Int, broken: Int, costsToRepair:Double) extends Vehicle {
+case class Bike(bikeId: Int, bikeMake: String, bikeModel: String, engineSize: Int, components :Parts,bikeDamage:Int, timeForFix:Int,bikeRepairCost:Double ) extends Vehicle {
   def vehicleType: VehicleTypes.Value = VehicleTypes.Bike
 
   def id: Int = bikeId
@@ -12,11 +12,18 @@ case class Bike(bikeId: Int, bikeMake: String, bikeModel: String, engineSize: In
 
   def model: String = bikeModel
 
-  var damaged: Int = broken
-  var repairCost:Double=costsToRepair
+  var damaged: Int = bikeDamage
 
-  override def toString = s"$vehicleType,$id,$make,$model,$engineSize,$damaged"
+  var parts: Parts = components
 
-  override def toFormattedString: String = s"Vehicle type: $vehicleType \tBike id:$id \tBike make:$make \tBike model:$model\tEngine size:$engineSize\t" + brokenCheck(damaged)
+  var repairCost:Double = bikeRepairCost
+
+  var timeToFixed : Int = timeForFix
+
+
+
+  override def toString:String = s"$vehicleType,\t$id,\t$make,\t$model,\t"+f"$repairCost%1.2f"
+
+  override def toFormattedString: String = s"Vehicle type: $vehicleType \tBike id:\t$id \tBike make:\t$make \tBike model:\t$model\tEngine size:\t$engineSize\t" + brokenCheck(damaged)
 
 }

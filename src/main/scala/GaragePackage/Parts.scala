@@ -2,19 +2,21 @@ package GaragePackage
 
 /**
   * Created by Administrator on 14/06/2017.
+  * False is parts is in the car
+  * True is parts is missing or broken
   */
-case class Parts(p1:Boolean, p2:Boolean,p3:Boolean,p4:Boolean,p5:Boolean,p6:Boolean,p7:Boolean,p8:Boolean,p9:Boolean,p10:Boolean,p11:Boolean) {
-  var glassWindows:Boolean = p1
-  var seats:Boolean = p2
-  var glassWindows:Boolean = p3
-  var glassWindows:Boolean = p4
-  var glassWindows:Boolean = p5
-  var glassWindows:Boolean = p6
-  var glassWindows:Boolean = p7
-  var glassWindows:Boolean = p8
-  var glassWindows:Boolean = p9
-  var glassWindows:Boolean = p10
-  var glassWindows:Boolean = p11
-
-
+case class Parts(windowsBroken:Boolean, seatsBroken:Boolean,lightsBroken:Boolean,wheelsBroken:Boolean,transmissionBroken:Boolean,breakesBroken:Boolean,alternatorBroken:Boolean,radiatorBroken:Boolean,batteryBroken:Boolean,engineBroken:Boolean,shockAbsorberBroken:Boolean) {
+  var windows: Boolean = windowsBroken
+  var seats: Boolean = seatsBroken
+  var lights: Boolean = lightsBroken
+  var wheels: Boolean = wheelsBroken
+  var transmission: Boolean = transmissionBroken
+  var breakes: Boolean = breakesBroken
+  var alternator: Boolean = alternatorBroken
+  var radiator: Boolean = radiatorBroken
+  var battery: Boolean = batteryBroken
+  var engine: Boolean = engineBroken
+  var shockAbsorber: Boolean = shockAbsorberBroken
 }
+
+

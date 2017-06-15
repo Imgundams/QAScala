@@ -1,11 +1,16 @@
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
-/*
+
 val filename = "C:\\Users\\Administrator\\IdeaProjects\\QAScala\\src\\main\\scala\\InputText.txt"
-def fileReader(filepath: String): Array[String] = Source.fromFile(filename).getLines.toArray.sortBy(-_.length)
+def fileReader(filepath: String): Array[String] =
+  Source.fromFile(filename).getLines().map(w=>w.toLowerCase).map(w => w.sorted).toArray.sortWith(_.length < _.length)
 var anagrams = fileReader(filename)
+
 fileReader(filename)
 
+anagrams
+
+/*
 def wordSplitter(words: String): String = {
   words.toCharArray.sorted
   var arrayOfLetters = ArrayBuffer[Char]()
@@ -25,7 +30,6 @@ var bool:Boolean = 'g'>'a'
 
 
 
-
 var words = fileReader(filename)
 
 
@@ -40,5 +44,6 @@ var codes =  words.map(x => orderTheString(x))
 */
 //words.foreach(words<=words.toCharArray.sorted.mkString)
 print(words)
-*/
+
 "hello"
+*/
