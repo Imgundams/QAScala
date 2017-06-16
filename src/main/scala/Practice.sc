@@ -1,3 +1,4 @@
+/*
 import scala.collection.mutable.ArrayBuffer
 case class Dude(name:String,hours:Int){
   var fullName = name
@@ -34,3 +35,28 @@ def fixIt(): Unit = {
     }
   }
 }
+*/
+
+import scala.util.control.Breaks._
+
+var end: Int = 10
+var breaker: Int = 0
+for (i <- 0 to end; if true) {
+  println(i)
+  if (i == 5) breaker += 1
+}
+println(end)
+print("Hello")
+
+
+do {
+  print(breaker)
+
+  if (breaker > 5) end = 1
+  else for (j <- 0 to end) {
+    breaker += 1
+    if (breaker ==5) end =1
+    print("bleh " + breaker)
+  }
+
+} while (end != 1)

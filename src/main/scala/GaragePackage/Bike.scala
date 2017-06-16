@@ -24,6 +24,6 @@ case class Bike(bikeId: Int, bikeMake: String, bikeModel: String, engineSize: In
 
   override def toString:String = s"$vehicleType,\t$id,\t$make,\t$model,\t"+f"$repairCost%1.2f"
 
-  override def toFormattedString: String = s"Vehicle type: $vehicleType \tBike id:\t$id \tBike make:\t$make \tBike model:\t$model\tEngine size:\t$engineSize\t" + brokenCheck(damaged)
+  override def toFormattedString: String = s"Vehicle type: $vehicleType \tBike id:\t$id \tBike make:\t$make \tBike model:\t$model\tTime to fix required:\t$timeToFixed\t" + brokenCheck(damaged)
 
 }

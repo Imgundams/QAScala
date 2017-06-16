@@ -29,6 +29,7 @@ object Garage {
 
     //Testing the Vehicles
     calculateDamageAndTimeToFix()
+    calculateCostFromDamage()
     printGarageContentFormatted()
 
     // removeVehicleById(2)
@@ -36,7 +37,8 @@ object Garage {
 
     findAndPrintById(1)
     println()
-    fixAllVehicle()
+    garageWork()
+    // fixAllVehicle()
     println()
 
     vehicleList.foreach(v => println(v.toFormattedStringAfterFix))
@@ -50,6 +52,7 @@ object Garage {
     println()
     printAll()
     vehicleList.foreach(v => v.toFormattedString)
+
   }
 
   //Code
@@ -74,8 +77,10 @@ object Garage {
     } else whenClosed()
   }
 
-  def printGarageContentFormatted():Unit ={
-    vehicleList.foreach(vehicle => {println(vehicle.toFormattedString)})
+  def printGarageContentFormatted(): Unit = {
+    vehicleList.foreach(vehicle => {
+      println(vehicle.toFormattedString)
+    })
   }
 
   def openOrClose(): Unit = {
@@ -134,14 +139,20 @@ object Garage {
     if (open) {
       jobTitle match {
         case JobTitles.Assistant =>
-          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 12000)
+          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 12000, isBusy = false)
         case JobTitles.Mechanic =>
-          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 25000)
+          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 25000, isBusy = false)
         case JobTitles.Supervisor =>
-          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 39000)
+          employeeList += Employee(idGenerator.unique2, employeeFullName, employeeContactNumber, jobTitle, 39000, isBusy = false)
       }
     }
     else whenClosed()
+  }
+
+  def findEmployeeNameById(eId: Int): String = {
+    var nametoSend: String = ""
+    employeeList.foreach(employee => if (employee.id == eId) nametoSend = employee.fullName)
+    nametoSend
   }
 
   def findAndPrintById(vehicleId: Int): Unit = {
@@ -154,7 +165,6 @@ object Garage {
   def fixAllVehicle(): Unit = {
     if (open) {
       vehicleList.foreach(vehicle => {
-        calculateCostFromDamage(vehicle)
         vehicle.damaged = 0
       })
       println("Hard work is done. All is right, all is fixed")
@@ -165,7 +175,6 @@ object Garage {
     if (open) {
       vehicleList.foreach(vehicle => {
         if (vehicle.id == vId) {
-          calculateCostFromDamage(vehicle)
           vehicle.damaged = 0
           println(vehicle.vehicleType + s" With the Id:$vId is fixed")
         }
@@ -190,13 +199,27 @@ object Garage {
     Parts(randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean, randomValue.randomBoolean)
   }
 
-  def calculateCostFromDamage(vehicleToCalculate: Vehicle): Unit = {
-    vehicleToCalculate match {
-      case _ if vehicleToCalculate.vehicleType == VehicleTypes.Car =>
+  def partsFix(vehicle: Vehicle): Unit = {
+    vehicle.parts.windows = false
+    vehicle.parts.battery = false
+    vehicle.parts.alternator = false
+    vehicle.parts.breakes = false
+    vehicle.parts.engine = false
+    vehicle.parts.lights = false
+    vehicle.parts.radiator = false
+    vehicle.parts.seats = false
+    vehicle.parts.shockAbsorber = false
+    vehicle.parts.transmission = false
+    vehicle.parts.wheels = false
+  }
+
+  def calculateCostFromDamage(): Unit = {
+    vehicleList.foreach {
+      case vehicleToCalculate if vehicleToCalculate.vehicleType == VehicleTypes.Car =>
         vehicleToCalculate.repairCost = vehicleToCalculate.damaged * 29.5
-      case _ if vehicleToCalculate.vehicleType == VehicleTypes.Bike =>
+      case vehicleToCalculate if vehicleToCalculate.vehicleType == VehicleTypes.Bike =>
         vehicleToCalculate.repairCost = vehicleToCalculate.damaged * 9.3
-      case _ => vehicleToCalculate.repairCost = vehicleToCalculate.damaged * 19
+      case vehicleToCalculate => vehicleToCalculate.repairCost = vehicleToCalculate.damaged * 19
     }
   }
 
@@ -231,6 +254,79 @@ object Garage {
     if (pieces.windowsBroken) totalHours += 4
     totalHours
   }
+
+  def garageWork(): Unit = {
+    val hoursInAShiftPer: Int = 8
+    var shiftCount: Int = 1
+    var hoursWorked: Int = 0
+    var dailyRepairCost: Double = 0
+    var dayCount = 1
+
+    println(s"\nDay $dayCount summary")
+
+    vehicleList.foreach(v => {
+      var timeToWork = v.timeToFixed
+      //  if (shiftCount < 2 && timeToWork == v.timeToFixed)
+      if ((shiftCount > 5 && timeToWork == v.timeToFixed)||v.id == vehicleList.length) {
+        // run out of employees and ve
+        shiftCount = 1
+        println(f"Today's total earnings of the garage through repair fees: £$dailyRepairCost%1.2f")
+        dailyRepairCost = 0
+        dayCount = dayCount + 1
+        println(s"\nDay $dayCount summary")
+      } // max hours of all employees in one working day
+      if (v.damaged == 0) {
+        println(s"Vehicle id " + v.id + " is Fixed. fixing next vehicle")
+      } //if Fixed get next car -- shouldn't appear
+      else {
+
+
+        while (employeeList.length > shiftCount || timeToWork > 0) {
+          //while no damage or shift count
+
+          for (i <- 0 to hoursInAShiftPer; if v.damaged > 0 || hoursWorked < hoursInAShiftPer) {
+            if (timeToWork < 1) {
+              //VehicleFixed
+              partsFix(v)
+              v.damaged = 0
+            }
+            else {//keepworking
+              timeToWork = timeToWork - 1
+              hoursWorked = hoursWorked + 1
+
+
+            }
+          }
+
+          if (v.damaged > 0) {//vehicle still broken after 8 hours
+            hoursWorked = 0
+            println("Employee id " + shiftCount + " worked on vehicle id " + v.id + " today and is still broken. " + timeToWork + " hours left till done")
+            shiftCount = shiftCount + 1 //next employee
+          }
+
+          else if (hoursWorked > hoursInAShiftPer) { //could not finished after shift
+            println("Employee id " + shiftCount + " worked on vehicle id " + v.id + " today and is still broken. " + timeToWork + " hours left till done")
+            hoursWorked = 0
+            shiftCount += 1
+
+          }
+          else if (v.damaged == 0) {
+            //fixed after or during 8 hours
+            dailyRepairCost += v.repairCost
+            // print("" + employeeList.foreach(e => if (e.employeeId == shiftCount) e.employeeFullName))
+            println("Employee id " + shiftCount + " worked on vehicle id " + v.id + " today and fixed it, with " + (hoursInAShiftPer - hoursWorked) + " hours left to work.")
+          }
+
+          else {
+            println("this line shouldn't appear. Fix the for loop")
+          }
+        }
+      }
+    }
+
+    )
+  }
+
 
   object idGenerator {
     private val clockticker = new java.util.concurrent.atomic.AtomicInteger
